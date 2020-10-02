@@ -9,18 +9,18 @@ git clone https://github.com/Xavied/_SGO_.git
 
 //instalamos las dependencias del proyecto <br>
 
-composer install 
+<ul> <h4>composer install </h4> </ul>
 
 //clonamos el contenido del archivo .env <br>
 
-cp.env.example .env
+<ul> <h4>cp.env.example .env </h4>  </ul>
 
 //generamos una App_Key  <br>
 
-php artisan Key:generate
+<ul> <h4>php artisan Key:generate </h4>  </ul>
 
 //ejecutamos el servidor para asegurarnos que funciono <br>
 
-php artisan serve<br>
+<ul> <h4>php artisan serve </h4>  </ul> <br>
 
 <h2>//Proyecto Listo para utilizarse!</h2>
