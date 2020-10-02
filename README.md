@@ -13,7 +13,7 @@ git clone https://github.com/Xavied/_SGO_.git
 
 //clonamos el contenido del archivo .env <br>
 
-<ul> <h4>cp.env.example .env </h4>  </ul>
+<ul> <h4>cp .env.example .env </h4>  </ul>
 
 //generamos una App_Key  <br>
 
