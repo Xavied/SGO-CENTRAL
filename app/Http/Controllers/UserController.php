@@ -38,7 +38,7 @@ class UserController extends Controller
         }
     }
 
-   /* public function register(Request $request)
+    public function register(Request $request)
     {
         $data= $request->all();
         $data['password']= bcrypt($data['password']);//se encripta la contraseña
@@ -47,9 +47,10 @@ class UserController extends Controller
 
         return response()->json([
             "message"=>"El usuario ha sido creado",
-            "data"=>$loginData
+            "data"=>$loginData,
+            //"pass"=> $data //se visualiza los datos del usuario creado
 
     ], 200);
     }
-    */
+
 }
