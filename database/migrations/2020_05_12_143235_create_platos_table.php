@@ -19,6 +19,7 @@ class CreatePlatosTable extends Migration
             $table->string('plt_des', 255);
             $table->string('plt_tipo', 255);
             $table->double('plt_pvp', 8, 2);
+            $table->boolean('plt_iva')->default('false');;
             $table->timestamps();
         });
     }

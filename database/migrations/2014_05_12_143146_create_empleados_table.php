@@ -15,7 +15,7 @@ class CreateEmpleadosTable extends Migration
     {
         Schema::create('empleados', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('emp_ci',10)->unique();
+            $table->string('emp_ci',13)->unique();
             $table->string('emp_nom', 255);
             $table->string('emp_dir', 255);
             $table->string('emp_telf', 10)->unsigned();
