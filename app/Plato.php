@@ -10,7 +10,8 @@ class Plato extends Model
         'plt_nom',
         'plt_des',
         'plt_tipo',
-        'plt_pvp'
+        'plt_pvp',
+        'plt_iva'
 
     ];
     //protected $hidden= ['id'];
