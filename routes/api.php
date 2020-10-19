@@ -16,9 +16,8 @@ Route::post('/login', 'UserController@login');
 Route::post('/register', 'UserController@register');
 
 
-/*Route::group(['middleware'=> 'auth:api'],function()
-{
-*/
+//Route::group(['middleware'=> 'auth:api'],function()
+//{
 //Rutas para buscar un cliente a través de la cédula y no del id
 Route::post('/cedulaclientes', 'ClienteController@buscarcedula');
 Route::get('/cedulaclientes/{cedulacliente}', 'ClienteController@verporcedula');
@@ -41,6 +40,4 @@ Route::apiResource('/facs', 'FacController');
 Route::apiResource('/estados', 'EstadoController');
 Route::apiResource('/pedidos', 'PedidoController');
 Route::apiResource('/detalles', 'DetalleController');
-
-/*}
-);*/
+//});

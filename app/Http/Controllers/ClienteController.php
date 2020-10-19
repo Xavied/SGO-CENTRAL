@@ -18,7 +18,7 @@ class ClienteController extends Controller
         $cliente=Cliente::all();
         return response()->json(
         [
-        "data:"=> $cliente,
+        "data"=> $cliente,
         "status"=>200
     ], 200);
     }

@@ -11,6 +11,7 @@ class Plato extends Model
         'plt_des',
         'plt_tipo',
         'plt_pvp',
+        'plt_visbl',
         'plt_iva'
 
     ];
