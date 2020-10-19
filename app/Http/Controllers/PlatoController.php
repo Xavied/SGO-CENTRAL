@@ -61,7 +61,7 @@ class PlatoController extends Controller
 
     public function tipoplatos($tipoplato)
     {
-        $verportipo=DB::table('platos')->select('id','plt_nom','plt_des', 'plt_pvp')->where('plt_tipo','=',$tipoplato)->get();
+        $verportipo=DB::table('platos')->select('id','plt_nom','plt_des', 'plt_pvp', 'plt_visbl')->where('plt_tipo','=',$tipoplato)->get();
         $verportipo=\json_decode($verportipo, true);
 
         if($verportipo!=null)
