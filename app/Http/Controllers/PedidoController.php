@@ -93,7 +93,7 @@ class PedidoController extends Controller
      */
    public function update(Request $request, Pedido $pedido)
     {
-       dd($request, $pedido);
+      
         $pedido->update($request->all()); //a la variable empresa la actualizamos con lo que me llegue de request
         return response()->json([
             "message"=>"El pedido ha sido actualizado",
