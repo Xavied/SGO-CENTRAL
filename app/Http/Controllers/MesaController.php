@@ -67,10 +67,10 @@ class MesaController extends Controller
             ->join('detalles', 'pedidos.id', '=', 'detalles.idPedido')
             ->join('facs', 'detalles.idFac', '=', 'facs.id')
             ->join('clientes', 'clientes.id', '=', 'facs.idCliente')
-            ->select('detalles.idFac', 'clientes.cli_ci', 'clientes.cli_nom', 'clientes.cli_dir', 'clientes.cli_telf' )
+            ->select('pedidos.id','detalles.idFac', 'clientes.cli_ci', 'clientes.cli_nom', 'clientes.cli_dir', 'clientes.cli_telf' )
             ->where('pedidos.idMesa', '=', $detalles)
             ->where( 'pedidos.ped_fch','=', $dia)
-            ->where('pedidos.ped_terminado', '=', false)->groupBy('idFac', 'cli_ci', 'cli_nom', 'cli_dir', 'cli_telf')->get();
+            ->where('pedidos.ped_terminado', '=', false)->groupBy('pedidos.id','idFac', 'cli_ci', 'cli_nom', 'cli_dir', 'cli_telf')->get();
             //$facturas=$facturas->groupBy('idFac');
             //vemos los platos que tiene esa mesa
             $platos=DB::table('pedidos')

@@ -16,6 +16,16 @@ class PedidoController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function index()//muestra todos los pedidos
+    {
+        $pedido=Pedido::Select('id', 'ped_fch')->get();
+        //$pedido=Pedido::all();
+        return response()->json(
+        [
+        "data"=> $pedido,
+        "status"=>200
+    ], 200);
+    }
 
     /**
      * Store a newly created resource in storage.
