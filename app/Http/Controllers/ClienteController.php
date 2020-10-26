@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\DB;
 use App\Cliente;
 use App\Detalle;
 use Illuminate\Http\Request;
+use Carbon\Carbon;
 
 class ClienteController extends Controller
 {
@@ -156,11 +157,7 @@ class ClienteController extends Controller
         ->where('cli_ci','=',$cedulacliente)->get();
 
         //Activar si se requiere ver la factura y el detalle de esas facturas. Activar los comentarios en el response de abajo(el único que está comentado)
-       /* $verfacturas=DB::table('facs')
-         ->join('clientes', 'clientes.id', '=', 'facs.idCliente')
-         ->select('facs.id', 'facs.fct_fch' )
-         ->where('clientes.cli_ci', '=', $cedulacliente)->get();
-
+       /*
          $verdetalles=DB::table('clientes')
          ->join('facs', 'clientes.id', '=', 'facs.idCliente')
          ->join('detalles', 'facs.id', '=', 'detalles.idFac')
@@ -196,6 +193,35 @@ class ClienteController extends Controller
 
 
         }
+    }
+
+    public function clifacs($clifac)
+    {
+        $now = Carbon::now();
+        $dia=$now->format('Y-m-d');
+
+        /*$verfacturas=DB::table('facs')
+        ->join('clientes', 'clientes.id', '=', 'facs.idCliente')
+        ->select('facs.id', 'facs.fct_fch', 'cli_ci' )
+        ->where('clientes.cli_ci', '=', $cedulacliente)
+        ->where('facs.fct_fch', '=', $dia)->get();*/
+
+        $facturas=DB::table('pedidos')
+        ->join('detalles', 'pedidos.id', '=', 'detalles.idPedido')
+        ->join('facs', 'detalles.idFac', '=', 'facs.id')
+        ->join('clientes', 'clientes.id', '=', 'facs.idCliente')
+        ->select('facs.id', 'clientes.cli_ci', 'clientes.cli_nom')
+        ->where('clientes.cli_ci', '=', $clifac)
+        ->where( 'pedidos.ped_fch','=', $dia)
+        ->where('pedidos.ped_terminado', '=', false)->groupBy('facs.id', 'clientes.cli_ci', 'clientes.cli_nom')->get();
+
+        return response()->json(
+            [
+                "factura_clientes"=>$facturas,//el id que aparece es de la factura, no del cliente
+            ],202
+        );
+
+
     }
 
 }

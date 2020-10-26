@@ -30,7 +30,8 @@ Route::get('/platopedidos/{platopedido}', 'DetalleController@platospedidos');
 //Actualizamos el id de la Factura en detalle por medio del id del pedido
 Route::patch('acfacdetalles/{acfacdetalle}', 'DetalleController@actualizarfac');
 
-
+//Buscamos una factura en base a la cédula del cliente
+Route::get('clifacs/{clifac}', 'ClienteController@clifacs');
 //Rutas tipo Resource
 Route::apiResource('/clientes', 'ClienteController');
 Route::apiResource('/mesas', 'MesaController');
