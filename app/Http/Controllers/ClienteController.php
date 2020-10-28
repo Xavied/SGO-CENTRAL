@@ -186,9 +186,9 @@ class ClienteController extends Controller
                 [
 
                     "message" => "No hay un cliente con esa cédula",
-                    "status"=>204
+                    "status"=>404
 
-                ], 204
+                ], 404
                 );
 
 
