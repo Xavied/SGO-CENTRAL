@@ -210,10 +210,10 @@ class ClienteController extends Controller
         ->join('detalles', 'pedidos.id', '=', 'detalles.idPedido')
         ->join('facs', 'detalles.idFac', '=', 'facs.id')
         ->join('clientes', 'clientes.id', '=', 'facs.idCliente')
-        ->select('facs.id', 'clientes.cli_ci', 'clientes.cli_nom')
+        ->select('detalles.idFac', 'detalles.idPedido', 'clientes.cli_ci', 'clientes.cli_nom')
         ->where('clientes.cli_ci', '=', $clifac)
         ->where( 'pedidos.ped_fch','=', $dia)
-        ->where('pedidos.ped_terminado', '=', false)->groupBy('facs.id', 'clientes.cli_ci', 'clientes.cli_nom')->get();
+        ->where('pedidos.ped_terminado', '=', false)->groupBy('detalles.idFac', 'detalles.idPedido',  'clientes.cli_ci', 'clientes.cli_nom')->get();
 
         return response()->json(
             [
