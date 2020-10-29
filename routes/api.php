@@ -27,6 +27,9 @@ Route::get('/tipoplatos/{tipoplato}', 'PlatoController@tipoplatos');
 //Ruta para ver un plato por el id del pedido
 Route::get('/platopedidos/{platopedido}', 'DetalleController@platospedidos');
 
+//Ruta para visaulizar solo los platos de una factura
+Route::get('/facsplatos/{facplato}', 'FacController@facsplatos');
+
 //Actualizamos el id de la Factura en detalle por medio del id del pedido
 Route::patch('acfacdetalles/{acfacdetalle}', 'DetalleController@actualizarfac');
 

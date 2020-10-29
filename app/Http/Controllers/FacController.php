@@ -109,4 +109,35 @@ class FacController extends Controller
             ], 202
             );
     }
+
+    public function facsplatos($facplato)
+    {
+        $fac=Fac::select('id', 'fct_fch')->where('facs.id', '=', $facplato)->get();
+        $platos_detalle=Plato::join('detalles', 'platos.id', '=', 'detalles.idPlato')->select('platos.id','detalles.dtall_cant', 'detalles.dtall_valor','platos.plt_nom', 'platos.plt_pvp', 'platos.plt_tipo')
+        ->where('detalles.idFac', $facplato)->get();
+
+        $verifac=\json_decode($fac, true);
+
+        if($verifac!=null)
+        {
+            return  response()->json(
+                [
+                    "factura" => $fac,
+                    "platos_detalle" => $platos_detalle,
+                    "status"=>202
+
+                ], 202);
+        }
+        else
+        {
+            return  response()->json(
+                [
+                    "message" => "No existe el número de factura buscado",
+                    "status"=>404
+
+                ], 404);
+
+        }
+
+    }
 }
