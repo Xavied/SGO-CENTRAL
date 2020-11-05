@@ -122,7 +122,7 @@ class DetalleController extends Controller
         {
             $detalleplape=DB::table('detalles')
             ->join('platos', 'platos.id', '=', 'detalles.idPlato')
-            ->select('detalles.id', 'platos.plt_nom', 'detalles.dtall_cant','platos.plt_pvp' ,'detalles.dtall_valor')
+            ->select('detalles.id', 'detalles.idPlato', 'platos.plt_nom', 'detalles.dtall_cant','platos.plt_pvp' ,'detalles.dtall_valor')
             ->where('detalles.idPedido', '=', $platopedido)->get();
             $verificar=\json_decode($detalleplape, true);
 
