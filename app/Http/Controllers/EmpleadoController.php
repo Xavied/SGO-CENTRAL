@@ -64,5 +64,30 @@ class EmpleadoController extends Controller
 
             ],202);
     }
+    //método para actualizar
+    public function update(Request $request, Empleado $empleado)
+    {
+        $empleado->update($request->all()); //a la variable empleado la actualizamos con lo que me llegue de request
+        return response()->json([
+            "message"=>"El empleado ha sido actualizado",
+            "data" => $empleado,
+            "status"=>202
+        ],202 );
+    }
+    //método para borrar
+    public function destroy( Empleado $empleado )
+    {
+        $empleado->delete();//Se borra completamente el empleado
+        return response()->json(
+            [
+                "message"=>"El empleado ha sido borrado",
+                "data" => $empleado,
+                "status"=>202
+
+            ], 202
+            );
+    }
+
+
 
 }

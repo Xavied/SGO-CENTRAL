@@ -14,7 +14,8 @@ class PlatoController extends Controller
      */
     public function index()
     {
-        $platos=Plato::all();
+
+        $platos=Plato::Select('*')->orderBy('id', 'ASC')->get();
         return response()->json(
         [
         "data:"=> $platos,
@@ -86,12 +87,24 @@ class PlatoController extends Controller
 
                 ], 404
                 );
-
-
         }
 
 
     }
+     //método para borrar
+    public function destroy( Plato $plato)
+    {
+        $plato->delete();//Se borra completamente el plato
+        return response()->json(
+            [
+                "message"=>"El plato ha sido borrado",
+                "data" => $plato,
+                "status"=>202
+
+            ], 202
+            );
+    }
+
 
 
 
